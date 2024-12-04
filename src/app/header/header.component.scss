@@ -1,0 +1,88 @@
+@import "../Styles/colors.scss";
+
+.header {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center;     /* Center content vertically */
+  padding: 10px 20px;
+  background-color: $header-background;
+  position: fixed;      
+  top: 0;               
+  left: 0;              
+  right: 0;             
+  width: 100%;          
+  z-index: 1000;        
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+
+    a {
+      font-family: $font-heading;
+      font-size: 38px;
+      color: $header-text-color;
+      text-decoration: none;
+      /* Remove margin-left */
+    }
+  }
+
+  .burger {
+    position: absolute; 
+    top: 30px;          
+    right: 60px;        /* Adjusted for mobile */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+
+    .burger-icon {
+      background-color: #fff;
+      height: 3px;
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px; 
+    right: 20px;
+    width: 200px;
+    display: none;  // Hidden by default on mobile
+    flex-direction: column;
+    gap: 15px;
+    background-color: $background-color-dark;
+    border-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    li {
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 1rem;
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+
+    &.active {
+      display: flex;  // Show the nav when burger menu is clicked
+    }
+  }
+}

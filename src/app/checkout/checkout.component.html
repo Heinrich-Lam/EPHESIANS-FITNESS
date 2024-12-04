@@ -1,0 +1,224 @@
+<app-header></app-header>
+
+<body>
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+
+    <div class="cart-summary">
+      <h2>Shopping Cart Summary</h2>
+      <div class="custom-divider"></div>
+      <div *ngIf="cartItems.length > 0; else emptyCart">
+        <div class="cart-item" *ngFor="let item of cartItems">
+          <p>
+            {{ item.product.name }} - {{ item.size }} / {{ item.color }} /
+            {{ item.type || "Standard" }}
+          </p>
+          <p>Quantity: {{ item.quantity }}</p>
+          <p>Price: R{{ item.product.price }}</p>
+          <p class="p1">
+            Total Price: R{{ item.product.price * item.quantity }}.00
+          </p>
+        </div>
+
+        <div class="total-amount">
+          <p>Subtotal: R{{ calculateTotalAmount() }}</p>
+          <p>Shipping Fee: R{{ calculateShippingFee() }}</p>
+          <p>
+            <strong
+              >Final Total: R{{
+                calculateTotalAmount() + calculateShippingFee()
+              }}</strong
+            >
+          </p>
+        </div>
+      </div>
+
+      <ng-template #emptyCart>
+        <p class="empty-cart">Your cart is empty!</p>
+      </ng-template>
+    </div>
+
+    <div class="custom-divider"></div>
+    
+    <div class="user-information">
+      <h2>Billing & Shipping Information</h2>
+
+      <form
+        #orderForm="ngForm"
+        (ngSubmit)="onSubmit(orderForm)"
+        autocomplete="off"
+      >
+        <label for="name">Full Name:*</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="userInfo.name"
+          name="name"
+          required
+        />
+
+        <label for="email">Email:*</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="userInfo.email"
+          name="email"
+          required
+          (focus)="onEmailFocus()"
+        />
+        <p *ngIf="emailFocused" class="email-warning">
+          Please ensure you enter the correct email address above.
+        </p>
+
+        <label for="address">Shipping Address:*</label>
+        <input
+          type="text"
+          id="address"
+          [(ngModel)]="userInfo.address"
+          name="address"
+          required
+        />
+
+        <label for="city">City:*</label>
+        <input
+          type="text"
+          id="city"
+          [(ngModel)]="userInfo.city"
+          name="city"
+          required
+        />
+
+        <label for="state">State:*</label>
+        <input
+          type="text"
+          id="state"
+          [(ngModel)]="userInfo.state"
+          name="state"
+          required
+        />
+
+        <label for="zip">ZIP Code:*</label>
+        <input
+          type="text"
+          id="zip"
+          [(ngModel)]="userInfo.zip"
+          name="zip"
+          required
+        />
+
+        <!-- <label for="country">Country:*</label>
+        <input
+          type="text"
+          id="country"
+          [(ngModel)]="userInfo.country"
+          name="country"
+          required
+        /> -->
+
+        <div class="custom-divider"></div>
+
+        <h2>Payment Information</h2>
+
+        <h3>Order Confirmation Message</h3>
+        <p>
+          Thank you for your order! You will receive an email shortly containing
+          your order information and payment details. If you have any questions,
+          feel free to reach out to us.
+        </p>
+        <p>~Ephesians Team</p>
+
+        <!-- Card Holder Name
+        <label for="cardHolder">Card Holder Name:*</label>
+        <input
+          type="text"
+          id="cardHolder"
+          [(ngModel)]="paymentInfo.cardHolder"
+          name="cardHolder"
+          required
+          pattern="[a-zA-Z ]+"
+          #cardHolder="ngModel"
+        />
+        <div *ngIf="cardHolder.invalid && cardHolder.touched">
+          <small *ngIf="cardHolder.errors?.['required']"
+            >Card holder name is required.</small
+          >
+          <small *ngIf="cardHolder.errors?.['pattern']"
+            >Card holder name can only contain letters and spaces.</small
+          >
+        </div>
+
+        <label for="cardNumber">Card Number:*</label>
+        <input
+          type="text"
+          id="cardNumber"
+          [(ngModel)]="formattedCardNumber"
+          (ngModelChange)="formatCardNumber($event)"
+          name="cardNumber"
+          required
+          pattern="[0-9-]{19}"
+          minlength="19"
+          maxlength="19"
+          #cardNumber="ngModel"
+        />
+        <div *ngIf="cardNumber.invalid && cardNumber.touched">
+          <small *ngIf="cardNumber.errors?.['required']"
+            >Card number is required.</small
+          >
+          <small *ngIf="cardNumber.errors?.['pattern']"
+            >Card number must be 16 digits.</small
+          >
+        </div>
+
+        <label for="expiry">Expiry Date:*</label>
+        <input
+          type="text"
+          id="expiry"
+          [(ngModel)]="paymentInfo.expiry"
+          name="expiry"
+          placeholder="MM/YY"
+          pattern="(0[1-9]|1[0-2])\/([0-9]{2})"
+          (input)="onExpiryInput($event)"
+          maxlength="5"
+          #expiry="ngModel"
+        />
+        <div *ngIf="expiry.invalid && expiry.touched">
+          <small *ngIf="expiry.errors?.['required']"
+            >Expiry date is required.</small
+          >
+          <small *ngIf="expiry.errors?.['pattern']"
+            >Expiry date must be in MM/YY format.</small
+          >
+        </div>
+
+        <label for="cvv">CVV:*</label>
+        <input
+          type="password"
+          id="cvv"
+          [(ngModel)]="paymentInfo.cvv"
+          name="cvv"
+          pattern="[0-9]{3,4}"
+          minlength="3"
+          maxlength="4"
+          #cvv="ngModel"
+        />
+        <div *ngIf="cvv.invalid && cvv.touched">
+          <small *ngIf="cvv.errors?.['required']">CVV is required.</small>
+          <small *ngIf="cvv.errors?.['pattern']"
+            >CVV must be 3 or 4 digits.</small
+          >
+        </div> -->
+
+        <button type="submit" class="confirm-order">Confirm Order</button>
+      </form>
+
+      <div class="back-to-cart">
+        <button type="button" class="confirm-order" (click)="backToCart()">
+          Back to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- <app-loading *ngIf="showLoading"></app-loading> -->
+  <app-popup-message></app-popup-message>
+  <app-footer></app-footer>
+</body>

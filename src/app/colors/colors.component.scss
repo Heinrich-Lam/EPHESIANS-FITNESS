@@ -1,0 +1,45 @@
+
+.color-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    max-width: 1050px;
+    margin: 50px auto;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+  }
+
+  .color-box {
+    position: relative;
+    width: 100px;
+    height: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .color-box:hover {
+    transform: scale(1.2);
+    z-index: 1;
+  }
+
+  .color-name {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .color-box:hover .color-name {
+    opacity: 1;
+  }
+
+  .color-light {
+    color: black;
+  }

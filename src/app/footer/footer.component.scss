@@ -1,0 +1,79 @@
+@import "../Styles/colors.scss";
+
+.footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $footer-background;
+  color: $footer-text;
+  padding: 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  text-align: center; /* Ensure text inside elements is centered */
+  z-index: 1000;
+}
+
+.footer-container {
+  width: 100%; /* Ensure it spans the full width */
+  max-width: 1200px; /* Add a max width for better structure */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all child elements horizontally */
+  justify-content: center; /* Center all child elements vertically */
+}
+
+.footer-logo {
+  width: 200px;
+  height: 50px;
+  background-image: url("../../assets/images/eph-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 20px; /* Add some spacing between sections */
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px; /* Space out the social icons evenly */
+  justify-content: center;
+  margin-bottom: 20px;
+  
+  a {
+    color: $footer-text;
+    font-size: 18px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $footer-hover;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.copyright,
+.developer {
+  font-family: $font-heading;
+  font-size: 1rem;
+  margin-top: 10px;
+  text-align: center; /* Ensure text alignment is consistent */
+}
+
+// Responsive adjustments for mobile screens
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .social-icons {
+    flex-wrap: wrap; /* Wrap icons on smaller screens */
+    justify-content: center;
+  }
+
+  .copyright,
+  .developer {
+    text-align: center;
+  }
+}

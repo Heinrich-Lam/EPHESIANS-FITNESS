@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+//Website Fonts.
+$font-heading: 'Raleway';
+$font-heading-2: 'Nunito';
+$font-body: 'Lato';
+$font-button: 'Nunito';
+$font-lable: 'Montserrat';
+
+//#region "November Color Theme."
+$accent-color: #3F778C;
+$accent-hover-color: #8FA9B5;
+
+$background-color-dark: #323D42;
+$black-color: #323D42; // Dark color close to black for deep contrast
+$border-color: #6587A1;
+$box-shadow-color: rgba(0, 0, 0, 0.15);
+$button-background: #38524C; // Dark green for buttons
+$button-checkout-color: #3F778C;
+$button-clear-color: #8FA9B5;
+$button-hover-background: #CBDCED;
+$button-hover-checkout: #8FA9B5;
+$button-hover-clear: #CBDCED;
+$button-hover-color: #8FA9B5;
+
+$card-background: #FFFFFF; // Keeping card backgrounds neutral
+$carousel-background: #38524C;
+
+$dark-background: #323D42;
+$danger-color: #C62828; // Preserving a high-contrast red for danger alerts
+$divider-color: #6587A1;
+
+$empty-cart-color: #323D42;
+
+$header-background: #38524C;
+$header-background-color: #6587A1;
+$header-text-color: #000000;
+$hero-text-color: #000000; // Retaining a black color for sharp contrast in hero sections
+
+$input-background: #CBDCED;
+$input-border-color: #3F778C;
+$input-focus-color: #8FA9B5;
+
+$order-info-background: #3F778C;
+
+$primary-color: #8FA9B5;
+$product-hover-shadow: rgba(63, 119, 140, 0.5);
+
+$secondary-color: #6587A1;
+$shadow-dark: rgba(50, 61, 66, 0.3);
+$shadow-light: rgba(50, 61, 66, 0.1);
+
+$text-dark-color: #323D42;
+$text-light-color: #CBDCED;
+
+$warning-color: #A67C1A; // Preserved existing warning color for visibility
+$white-color: #FFFFFF;
+
+// Cart-Count
+$badge-background: #3F778C;
+$highlight-background: #ffc107; // Retaining a highlight background color for badges
+
+// Footer
+$footer-background: #38524C; 
+$footer-text: #CBDCED;
+$footer-hover: #8FA9B5;
+
+// About Us
+$about-us-background: #6587A1;
+$about-us-text: #323D42;
+$about-us-li-background: #CBDCED;
+$about-us-li-hover: #8FA9B5;
+
+// Contact Us
+$contact-us-main-background: #6587A1;
+$contact-us-heading-color: #153147;
+$contact-us-text-color: #323D42;
+$contact-us-txt-area-background: #CBDCED;
+$contact-us-border-color: #38524C;
+$contact-us-button: #3F778C;
+$contact-us-button-hover: #8FA9B5;
+
+//#endregion

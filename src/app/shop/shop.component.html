@@ -1,0 +1,169 @@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products Page</title>
+  </head>
+  <body>
+    <app-header></app-header>
+    <main>
+      <section class="hero">
+        <h1>Welcome to Ephesians Fitness</h1>
+        <p class="verse">
+          “For it is by grace you have been saved, through faith…” - Ephesians
+          2:8-9
+        </p>
+        <p>
+          Discover premium, Christian-centered fitness apparel designed to inspire
+          and empower your journey.
+        </p>
+        <p>
+          From stylish pump covers to comfortable joggers and hoodies, we have
+          everything you need to look and feel great while you train.
+        </p>
+      </section>
+  
+      <section class="order-info">
+        <div>
+          <h2>Shipping Information</h2>
+          <p>Shipping will be R50 across South Africa.</p>
+          <p>If you spend more than R800 your shipping will be free.</p>
+        </div>
+  
+        <div>
+          <h2>Order Confirmation & Payment</h2>
+          <p>
+            As soon as we have received your order we will send you an invoice.
+          </p>
+          <p>We will confirm your order once you have made the payment.</p>
+        </div>
+      </section>
+  
+      <div class="custom-divider"></div>
+  
+      <section class="color-info" [style.background-color]="backgroundColor">
+        <!-- Bind background color -->
+        <div>
+          <h2>Available Colors.</h2>
+          <p>These are the colors for the various products we sell.</p>
+          <p>Note: Not all the products are available in all the colors.</p>
+        </div>
+        <div>
+          <app-colors (colorHover)="onColorHover($event)"></app-colors>
+          <!-- Listen for the event -->
+        </div>
+      </section>
+  
+      <section class="category-dropdown">
+        <h2>Select a Category:</h2>
+        <select [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+          <option *ngFor="let category of productCategories" [ngValue]="category">
+            {{ category.title }}
+          </option>
+        </select>
+      </section>
+  
+      <section class="featured-products" *ngIf="selectedCategory">
+        <h2>{{ selectedCategory.title }}</h2>
+        <div class="carousel-container">
+          <button (click)="prevProduct(selectedCategory)">&#10094;</button>
+          <div class="carousel">
+            <div class="product-grid">
+              <figure
+                *ngFor="let product of getVisibleProducts(selectedCategory)"
+              >
+                <img [src]="product.image" [alt]="product.name" />
+                <figcaption>{{ product.name }}</figcaption>
+                <p>R{{ product.price }}</p>
+  
+                <div class="product-options">
+                  <div class="option-group" *ngIf="product.availableSizes">
+                    <label for="size">Size:</label>
+                    <select
+                      [(ngModel)]="selectedOptions[product.name].size"
+                      id="size"
+                    >
+                      <option
+                        *ngFor="let size of product.availableSizes"
+                        [value]="size"
+                      >
+                        {{ size }}
+                      </option>
+                    </select>
+                  </div>
+  
+                  <div class="option-group" *ngIf="product.availableTypes">
+                    <label for="type">Type:</label>
+                    <select
+                      [(ngModel)]="selectedOptions[product.name].type"
+                      id="type"
+                    >
+                      <option
+                        *ngFor="let type of product.availableTypes"
+                        [value]="type"
+                      >
+                        {{ type }}
+                      </option>
+                    </select>
+                  </div>
+  
+                  <div class="option-group" *ngIf="product.availableColors">
+                    <label for="color">Color:</label>
+                    <select
+                      [(ngModel)]="selectedOptions[product.name].color"
+                      id="color"
+                    >
+                      <option
+                        *ngFor="let color of product.availableColors"
+                        [value]="color"
+                      >
+                        {{ color }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+  
+                <button
+                  (click)="
+                    addToCart(
+                      product,
+                      selectedOptions[product.name],
+                      selectedQuantity
+                    )
+                  "
+                >
+                  Add to Cart
+                </button>
+              </figure>
+            </div>
+          </div>
+          <button (click)="nextProduct(selectedCategory)">&#10095;</button>
+        </div>
+        <div class="page-count" *ngIf="selectedCategory">
+          {{ getCurrentPage(selectedCategory) }} of
+          {{ getTotalPages(selectedCategory) }}
+        </div>
+  
+        <app-cart-count></app-cart-count>
+        <button class="check-button" (click)="onViewCart()">View Cart</button>
+      </section>
+    </main>
+  
+    <div class="custom-divider"></div>
+  
+    <section id="about-us" #aboutUs>
+      <app-about-us></app-about-us>
+    </section>
+  
+    <div class="custom-divider"></div>
+  
+    <section id="review" #reviews>
+      <app-reviews></app-reviews>
+    </section>
+  
+    <div class="notification" *ngIf="showNotification">Item added to cart!</div>
+  
+    <app-popup-message></app-popup-message>
+    <!-- Conditional rendering of footer -->
+    <app-footer *ngIf="isFooterVisible"></app-footer>
+  </body>
+  

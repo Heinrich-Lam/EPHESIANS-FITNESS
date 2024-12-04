@@ -1,0 +1,34 @@
+<body>
+    <div id="contact-us">
+        <h2>Contact Us</h2>
+        <p>We’d love to hear from you! If you have any questions or feedback, please reach out to us using the form below or through our contact information.</p>
+    
+        <form #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" ngModel required>
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" ngModel required (focus)="onEmailFocus()">
+            
+            <p *ngIf="emailFocused" class="email-warning">Please ensure you enter the correct email address above.</p>
+        
+        
+            <label for="phone">Phone (optional):</label>
+            <input type="tel" id="phone" name="phone" ngModel>
+        
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" ngModel>
+        
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" ngModel required></textarea>
+        
+            <button type="submit">Send Message</button>
+        </form>    
+    
+        <h3>Or reach us at:</h3>
+        <p>Email: fitnessephesians&#64;gmail.com</p>
+        <p>Phone: (+27)71-372-0041</p>
+        <p>Address: 123 Fitness Lane, City, State, ZIP</p>
+    </div>
+     <app-popup-message></app-popup-message>
+    </body>

@@ -1,0 +1,284 @@
+@import '../Styles/colors.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background-color-dark;
+  color: $white-color;
+  font-family: Arial, sans-serif;
+}
+
+.hero {
+  margin-top: 65px;
+  font-family: $font-body;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 50px 20px;
+  background-color: $button-background;
+  color: $hero-text-color;
+}
+
+.custom-divider {
+  width: 100%;
+  height: 4px;
+  background-color: #666;
+  margin: 20px 0;
+  border-radius: 2px;
+}
+
+.workout-programs,
+.coaching-programs {
+  padding: 40px;
+  text-align: center;
+
+  h2 {
+    font-family: $font-heading-2;
+    color: $hero-text-color;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  .program-grid,
+  .coaching-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(3, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .program-card,
+  .coaching-card {
+    background-color: $card-background;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 20px;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      font-family: $font-heading-2;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: $accent-color;
+    }
+
+    p {
+      font-family: $font-body;
+      font-size: 1.1rem;
+      color: $text-dark-color;
+      margin-bottom: 20px;
+    }
+
+    .cta-btn {
+      font-family: $font-button;
+      background-color: $button-background;
+      color: $white-color;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $button-hover-background;
+      }
+    }
+  }
+}
+
+.request-workout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, $accent-color, $button-hover-background);
+    color: $white-color;
+    text-align: center;
+  
+    .form-card {
+      background-color: $card-background;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+  
+      h2 {
+        font-family: $font-heading;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: $accent-color;
+      }
+  
+      p {
+        font-family: $font-body;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: $text-dark-color;
+      }
+  
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+  
+        label {
+          font-family: $font-body;
+          font-size: 1rem;
+          margin-bottom: 8px;
+          display: block;
+          color: $text-dark-color;
+        }
+  
+        input,
+        textarea {
+          width: 100%;
+          padding: 12px;
+          font-size: 1rem;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+          background-color: #f9f9f9;
+          transition: border-color 0.3s ease;
+  
+          &:focus {
+            outline: none;
+            border-color: $accent-color;
+            background-color: #fff;
+            box-shadow: 0 0 4px $accent-color;
+          }
+        }
+      }
+  
+      .cta-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+        font-family: $font-button;
+        background-color: $button-background;
+        color: $white-color;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+  
+        &:hover {
+          background-color: $button-hover-background;
+          transform: translateY(-2px);
+        }
+  
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  
+    .email-warning {
+      font-size: 0.9rem;
+      color: #f39c12;
+      margin-top: 8px;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .request-workout {
+      padding: 30px 10px;
+  
+      .form-card {
+        padding: 20px;
+      }
+  
+      .cta-btn {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+
+.carousel {
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+}
+
+.page-count {
+  font-size: 1rem;
+  color: $white-color;
+  margin-top: 10px;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero {
+    font-size: 1rem;
+    padding: 30px 10px;
+  }
+
+  .program-grid,
+  .coaching-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .program-card,
+  .coaching-card {
+    margin: 10px;
+  }
+
+  .carousel-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .carousel {
+    width: 90%;
+  }
+
+  .request-workout .form-group input,
+  .request-workout .form-group textarea {
+    width: 100%;
+  }
+
+  .cta-btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .page-count {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    font-size: 0.9rem;
+    padding: 20px 10px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .cta-btn {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}

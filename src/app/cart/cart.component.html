@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<body>
+  <div class="cart-container">
+    <h1>Shopping Cart</h1>
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <div class="cart-item" *ngFor="let item of cartItems; let i = index">
+        <div class="item-details">
+          <p>{{ item.product.name }} - {{ item.size }} / {{ item.color }} / {{ item.type || 'Standard' }}</p>
+          <p class="price-quantity">
+            <span>Quantity:</span>
+            <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(i, item.quantity)">
+          </p>
+          <p>Price: R{{ item.product.price }}</p>
+        </div>
+        <button (click)="removeItem(i)">Remove</button>
+      </div>
+    </div>
+
+    <div class="total-amount">
+      <p>Total Amount: R{{ calculateTotalAmount() }}</p>
+    </div>
+
+    <div class="shipping-fee">
+      <p>Shipping Fee: R{{ calculateShippingFee() }}</p>
+    </div>
+
+    <div class="final-total">
+      <p>Final Total: R{{ calculateTotalAmount() + calculateShippingFee() }}</p>
+    </div>
+
+    <div class="footer-buttons">
+      <button class="clear-cart" (click)="clearCart()">Clear Cart</button>
+      <button class="checkout" (click)="proceedToCheckout()">Checkout</button>
+      <button class="back" (click)="backToProducts()">Back</button>
+    </div>
+
+    <ng-template #emptyCart>
+      <p class="empty-cart">Your cart is empty!</p>
+    </ng-template>
+  </div>
+
+  <app-popup-message></app-popup-message>
+  <app-footer></app-footer>
+</body>

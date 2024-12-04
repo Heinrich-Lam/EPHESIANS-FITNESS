@@ -1,0 +1,87 @@
+<app-header></app-header>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Shopping Home Page</title>
+</head>
+
+<body>
+    <div class="hero">
+      <h1>Welcome to Ephesians Fitness</h1>
+      <p class="verse">
+        “For it is by grace you have been saved, through faith…” - Ephesians
+        2:8-9
+      </p>
+      <p>
+        Discover premium, Christian-centered fitness apparel designed to inspire
+        and empower your journey.
+      </p>
+      <p>
+        From stylish pump covers to comfortable joggers and hoodies, we have
+        everything you need to look and feel great while you train.
+      </p>
+        <button (click)="onShop()">Start Shopping</button>
+    </div>
+    
+    
+    
+    <!-- <div class="search-bar-container">
+      <div class="search-bar">
+        <input class="search-input" type="text" placeholder="Search products..." />
+        <button class="search-button">Search</button>
+      </div>
+    </div> -->    
+    
+    <section class="featured-products">
+      <section class="category-dropdown">
+        <h2>Select a Category:</h2>
+        <select [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+          <option *ngFor="let category of productCategories" [ngValue]="category">
+            {{ category.title }}
+          </option>
+        </select>
+      </section>
+
+      <div class="carousel-container" *ngIf="selectedCategory">
+        <button (click)="prevProduct(selectedCategory)">&#10094;</button>
+        <div class="carousel">
+          <div class="product-grid">
+            <figure
+              *ngFor="let product of getVisibleProducts(selectedCategory)"
+            >
+            <figcaption>{{ product.name }}</figcaption>
+            <img
+            [src]="product.image"
+            [alt]="product.name + ' - price: R' + product.price"
+            loading="lazy"
+            />
+            </figure>
+          </div>
+        </div>
+        <button (click)="nextProduct(selectedCategory)">&#10095;</button>
+      </div>
+      <div class="page-count" *ngIf="selectedCategory">
+        {{ getCurrentPage(selectedCategory) }} of
+        {{ getTotalPages(selectedCategory) }}
+      </div>
+    </section>
+    
+    <div class="custom-divider"></div>
+
+    <section id="about" #aboutUs>
+      <app-about-us></app-about-us>
+    </section>
+
+    <div class="custom-divider"></div>
+
+    <section id="contact" #contactUs>
+      <app-contact-us></app-contact-us>
+    </section>
+
+    <!-- <section>
+      <app-reviews></app-reviews>
+    </section> -->
+    
+<app-footer></app-footer>
+</body>

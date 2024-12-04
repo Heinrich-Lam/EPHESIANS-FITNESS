@@ -1,0 +1,322 @@
+@import '../Styles/colors.scss';
+
+@mixin button-style($bg-color: $primary-color) {
+  background-color: $bg-color;
+  color: $black-color;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($bg-color, 10%);
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: $text-dark-color;
+  background-color: $dark-background;
+}
+
+.custom-divider {
+  width: 100%;
+  height: 4px;
+  background-color: #666;
+  margin: 20px 0;
+  border-radius: 2px;
+}
+
+h1, h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: $font-heading;
+  font-size: 2.5em;
+}
+
+h2 {
+  font-family: $font-heading-2;
+  font-size: 2.5em;
+}
+
+p {
+  font-family: $font-body;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+main {
+  color: $secondary-color;
+  padding-top: 20px;
+}
+
+.hero {
+  background-image: linear-gradient(to bottom, $primary-color, $secondary-color);
+  color: $black-color;
+  padding: 20px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  h1 {
+    font-family: $font-heading;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px $box-shadow-color;
+  }
+}
+
+.featured-products {
+  font-family: $font-body;
+  color: $text-light-color;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.carousel {
+  width: 95%;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  justify-content: center;
+}
+
+figure {
+  background-color: $order-info-background;
+  box-shadow: 0 8px 32px $box-shadow-color;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 80px $product-hover-shadow;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  figcaption {
+    font-size: 18px;
+    margin-top: 20px;
+    color: $black-color;
+  }
+
+  p {
+    font-weight: bold;
+    color: $black-color;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .product-options {
+    color: $primary-color;
+    margin-bottom: 20px;
+  }
+
+  .option-group {
+    color: $black-color;
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  select {
+    background-color: $button-hover-color;
+    color: $black-color;
+    text-align: center;
+    width: 40%;
+    padding: 8px;
+    border: 1px solid $primary-color;
+    border-radius: 4px;
+    appearance: none;
+  }
+
+  button {
+    @include button-style($primary-color);
+    width: 100%;
+    max-width: 200px;
+    margin-top: 20px;
+    font-family: $font-button;
+    font-size: 1rem;
+  }
+}
+
+.order-info {
+  text-align: center;
+  background-color: $order-info-background;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px $box-shadow-color;
+
+  h2 {
+    color: $black-color;
+    margin-bottom: 15px;
+    font-size: 2em;
+  }
+
+  p {
+    color: $black-color;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    line-height: 1.6;
+  }
+}
+
+.color-info {
+  text-align: center;
+  background-color: var(--product-order-info-background, $order-info-background); 
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px $box-shadow-color;
+
+  h2 {
+    color: var(--product-text-color, $black-color); 
+    margin-bottom: 15px;
+    font-size: 1.7em;
+  }
+
+  p {
+    color: var(--product-text-color, $black-color); 
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    line-height: 1.6;
+  }
+}
+
+.check-button {
+    @include button-style($primary-color);
+    width: 100%;
+    max-width: 200px;
+    margin-top: 20px;
+    font-family: $font-button;
+    font-size: 1rem;
+  }
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.notification.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.category-dropdown {
+  text-align: center;
+  margin: 20px 0;
+
+  h2 {
+    font-size: 1.8em;
+    color: $text-light-color; 
+    margin-bottom: 10px;
+  }
+
+  select {
+    width: 50%; 
+    padding: 12px; 
+    border: 1px solid $primary-color; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+    color: $black-color; 
+    background-color: $button-hover-color; 
+
+    
+    &:focus {
+      border-color: darken($primary-color, 15%); 
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+      outline: none; 
+    }
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+  visibility: hidden; 
+
+  &.visible {
+    visibility: visible; 
+  }
+
+  .spinner {
+    border: 8px solid $white-color;
+    border-top: 8px solid $primary-color;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

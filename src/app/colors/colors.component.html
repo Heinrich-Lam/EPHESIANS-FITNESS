@@ -1,0 +1,15 @@
+<div class="color-grid-container">
+    <div 
+      *ngFor="let color of colors" 
+      class="color-box" 
+      [style.background-color]="getColor(color)"
+      [ngClass]="{'color-light': isLightColor(color)}"
+      (click)="onColorSelect(color)"
+      (mouseenter)="onColorHover(color)"
+      (mouseleave)="onColorHover('')"
+      title="{{ color }}"
+    >
+      <span class="color-name">{{ color }}</span>
+    </div>
+  </div>
+  

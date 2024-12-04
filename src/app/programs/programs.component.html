@@ -1,0 +1,141 @@
+<body>
+    <app-header></app-header>
+    <main>
+      <section class="hero">
+        <h1>Workout Programs at Ephesians Fitness</h1>
+        <p>
+          Explore personalized and goal-oriented workout plans, built to help you
+          achieve your best self.
+        </p>
+      </section>
+  <!-- 
+      <section class="navigation-bar">
+        <button class="cta-btn" (click)="onHome()">Back Home</button>
+      </section> -->
+  
+      <section class="workout-programs">
+        <h2>Our Workout Programs</h2>
+        <div class="carousel-container">
+  
+          <!-- <div class="carousel-image left-image">
+            <img src="assets/images/pump-cover-1.png" alt="Left Image" />
+          </div> -->
+  
+          <button (click)="prevWorkoutProgram()">&#10094;</button>
+          <!-- Previous button -->
+  
+          <div class="carousel">
+            <div class="program-grid">
+              <div
+                class="program-card"
+                *ngFor="let program of getVisibleWorkoutPrograms()"
+              >
+                <h3>{{ program.title }}</h3>
+                <p>{{ program.description }}</p>
+                <button class="cta-btn" (click)="viewWorkoutProgram(program.id)">
+                  View Program
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <button (click)="nextWorkoutProgram()">&#10095;</button>
+  
+          <!-- <div class="carousel-image right-image">
+            <img src="assets/images/pump-cover-1.png" alt="Right Image" />
+          </div> -->
+          
+        </div>
+  
+        <!-- Page Count Display -->
+        <div class="page-count">
+          {{ getCurrentWorkoutPage() }} of {{ getTotalWorkoutPages() }}
+        </div>
+      </section>
+  
+      <div class="custom-divider"></div>
+  
+      <section class="coaching-programs">
+        <h2>Our Coaching Programs</h2>
+        <div class="carousel-container">
+          <button (click)="prevCoachProgram()">&#10094;</button>
+          <!-- Previous button -->
+  
+          <div class="carousel">
+            <div class="coaching-grid">
+              <div
+                class="coaching-card"
+                *ngFor="let coaching of getVisibleCoachPrograms()"
+              >
+                <h3>{{ coaching.title }}</h3>
+                <p>{{ coaching.description }}</p>
+                <button class="cta-btn" (click)="viewCoachingProgram(coaching.id)">
+                  View Coaching Program
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <button (click)="nextCoachProgram()">&#10095;</button>
+          <!-- Next button -->
+        </div>
+  
+        <!-- Page Count Display -->
+        <div class="page-count">
+          {{ getCurrentCoachPage() }} of {{ getTotalCoachPages() }}
+        </div>
+      </section>
+  
+      <section class="request-workout">
+        <div class="form-card">
+          <h2>Request a Personalized Workout Plan</h2>
+          <p>
+            Let us help you achieve your fitness goals with a workout plan tailored to your needs. Fill out the form below to get started!
+          </p>
+          <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                id="name"
+                [(ngModel)]="formData.name"
+                name="name"
+                required
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                [(ngModel)]="formData.email"
+                name="email"
+                required
+                placeholder="Enter your email address"
+                (focus)="onEmailFocus()"
+              />
+              <p *ngIf="emailFocused" class="email-warning">
+                Please ensure you enter the correct email address.
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="goals">Your Fitness Goals:</label>
+              <textarea
+                id="goals"
+                [(ngModel)]="formData.goals"
+                name="goals"
+                required
+                placeholder="Describe your fitness goals here..."
+              ></textarea>
+            </div>
+            <button class="cta-btn" type="submit">Request Workout</button>
+          </form>
+        </div>
+      </section>
+      
+    </main>
+    <app-popup-message></app-popup-message>
+    <app-footer></app-footer>
+  </body>
+  

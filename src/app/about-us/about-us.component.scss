@@ -1,0 +1,67 @@
+@import '../Styles/colors.scss';
+
+body {
+    background-color: $background-color-dark;
+    color: $text-dark-color;
+}
+
+#about-us {
+    background-color: $about-us-background;
+    padding: 40px 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+    h1 {
+        font-family: $font-heading;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: $about-us-text;
+    }
+
+    h2 {
+        font-family: $font-heading-2;
+        font-size: 2em;
+        margin: 30px 0 20px;
+        color: $about-us-text;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    p {
+        font-family: $font-body;
+        margin: 15px 0;
+        font-size: 1.4em;
+        line-height: 1.6;
+        color: $about-us-text;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        text-align: left;
+
+        li {
+            font-family: $font-lable;
+            background-color: $about-us-li-background;
+            color: $about-us-text;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    li:hover {
+        background-color: $about-us-li-hover;
+        transition: background-color 0.3s;
+    }
+}

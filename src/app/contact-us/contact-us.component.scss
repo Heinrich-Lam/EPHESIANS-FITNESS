@@ -1,0 +1,95 @@
+@import '../Styles/colors.scss';
+
+body {
+    background-color: $background-color-dark;
+    color: $text-dark-color;
+}
+
+#about-us, #contact-us {
+    background-color: $contact-us-main-background;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    font-family: Arial, sans-serif; 
+    max-height: 800px;
+
+    h2 {
+        font-family: $font-heading;
+        font-size: 2.5em; 
+        margin-bottom: 15px;
+        color: $contact-us-text-color;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    h3 {
+        font-family: $font-heading;
+        font-size: 1.0rem;
+        margin-bottom: 15px;
+        color: $contact-us-text-color;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    p {
+        font-family: $font-body;
+        font-size: 1.4em;
+        line-height: 1.4;
+        color: $contact-us-text-color;
+        margin-bottom: 10px;
+    }
+
+    form {
+        max-width: 500px; 
+        margin: 20px auto; 
+        display: flex; 
+        flex-direction: column; 
+
+        label {
+            font-family: $font-body;
+            font-size: 1.0em; 
+            margin-bottom: 3px; 
+            color: $contact-us-text-color;
+        }
+
+        input, textarea {
+            background-color: $contact-us-txt-area-background;            
+            color: $contact-us-text-color;
+            padding: 8px; 
+            margin-bottom: 10px; 
+            border: 1px solid $contact-us-border-color; 
+            border-radius: 4px; 
+            font-size: 0.9em; 
+            transition: border-color 0.3s; 
+
+            &:focus {
+                border-color: $contact-us-border-color; 
+                outline: none; 
+            }
+        }
+
+        button {
+            padding: 10px; 
+            background-color: $contact-us-button; 
+            color: $contact-us-text-color; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 0.9em; 
+            transition: background-color 0.3s; 
+
+            &:hover {
+                background-color: $contact-us-button-hover; 
+            }
+        }
+    }
+}
+
+.email-warning {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  

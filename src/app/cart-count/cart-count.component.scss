@@ -1,0 +1,33 @@
+@import '../Styles/colors.scss';
+
+.cart-container {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .cart-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .cart-link:hover {
+    text-decoration: underline;
+  }
+  
+  .badge {
+    background-color: $badge-background;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 14px;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    margin-left: 5px;
+  }
+  
+  .highlight {
+    background-color: $highlight-background;
+    color: black;
+  }
+  
