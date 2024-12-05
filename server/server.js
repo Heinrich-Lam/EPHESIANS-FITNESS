@@ -8,7 +8,12 @@ const validator = require('validator');
 const path = require('path');
 const fs = require('fs');
 const Papa = require('papaparse');
-require('dotenv').config();
+const config = require('./config');
+
+const googleClientId = config.googleClientId;
+const googleClientSecret = config.googleClientSecret;
+const googleRefreshToken = config.googleRefreshToken;
+const googleUser = config.googleUser;
 
 const app = express();
 app.use(cors());
@@ -16,13 +21,13 @@ app.use(bodyParser.json());
 
 // Google OAuth2 setup
 const oauth2Client = new OAuth2(
-  process.env.GOOGLE_CLIENT_ID,      // Use environment variable for Client ID
-  process.env.GOOGLE_CLIENT_SECRET, // Use environment variable for Client Secret
+  googleClientId, // Google Cloud Client ID
+  googleClientSecret, // Google Cloud Client Secret
   'https://developers.google.com/oauthplayground' // Redirect URI
 );
 
 oauth2Client.setCredentials({
-  refresh_token: process.env.GOOGLE_REFRESH_TOKEN
+  refresh_token: googleRefreshToken
 });
 
 // Nodemailer transporter setup
@@ -30,10 +35,10 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     type: 'OAuth2',
-    user: process.env.GMAIL_USER,          // Use environment variable for your email
-    clientId: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+    user: googleUser, // Your email
+    clientId: googleClientId,
+    clientSecret: googleClientSecret,
+    refreshToken: googleRefreshToken,
     accessToken: oauth2Client.getAccessToken()
   }
 });
@@ -62,7 +67,7 @@ app.post('/send-email', (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: 'fitnessephesians@gmail.com', // Your email
+    to: googleUser, // Your email
     subject: `Contact Us Form - ${subject || 'No Subject'}`,
     text: `Message from ${name} (${phone}): ${message}`,
     html: `
@@ -89,7 +94,7 @@ app.post('/request-workout', (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: 'fitnessephesians@gmail.com', // Your email
+    to: googleUser, // Your email
     subject: `Workout Request from ${name}`,
     text: `Workout request from ${name} (${email}): ${goals}`,
     html: `
@@ -137,7 +142,7 @@ app.post('/send-payment-email', (req, res) => {
 
   const mailOptions = {
     from: email, // Sender's email
-    to: 'fitnessephesians@gmail.com', // Your email
+    to: googleUser, // Your email
     subject: `Order Information from ${name}`,
     text: `
       Payment information from ${name} (${email}): 
@@ -161,7 +166,7 @@ app.post('/send-payment-email', (req, res) => {
 
   // Mail options to send back to the client with banking details
   const clientMailOptions = {
-    from: 'fitnessephesians@gmail.com',
+    from: googleUser,
     to: email,
     subject: `Order Confirmation - Payment Details for ${name}`,
     text: `
@@ -224,7 +229,7 @@ app.post('/send-review-email', (req, res) => {
 
   const mailOptions = {
     from: email, // Sender's email
-    to: 'fitnessephesians@gmail.com', // Your email
+    to: googleUser, // Your email
     subject: `New Review from ${name}`,
     text: `
       Review from ${name} (${email}):
@@ -252,7 +257,7 @@ app.post('/send-shipment-email', (req, res) => {
   const { orderid, orderdate, totalAmount, email } = req.body;
 
   const mailOptions = {
-    from: 'fitnessephesians@gmail.com', // Sender's email
+    from: googleUser, // Sender's email
     to: email,
     subject: `Order Out for delivery: ${orderid}`,
     text: `
