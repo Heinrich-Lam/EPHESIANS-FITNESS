@@ -8,6 +8,7 @@ const validator = require('validator');
 const path = require('path');
 const fs = require('fs');
 const Papa = require('papaparse');
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
@@ -15,13 +16,13 @@ app.use(bodyParser.json());
 
 // Google OAuth2 setup
 const oauth2Client = new OAuth2(
-  '280762704986-rtiahrk4op6jc9d43t9u5cmlqh7gd72j.apps.googleusercontent.com', // Google Cloud Client ID
-  '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', // Google Cloud Client Secret
+  process.env.GOOGLE_CLIENT_ID,      // Use environment variable for Client ID
+  process.env.GOOGLE_CLIENT_SECRET, // Use environment variable for Client Secret
   'https://developers.google.com/oauthplayground' // Redirect URI
 );
 
 oauth2Client.setCredentials({
-  refresh_token: '1//04OL5ztfZcAZUCgYIARAAGAQSNwF-L9IrbeFIrgau64oN1-_EcGXDXGnmyy9kzFvgkDgeWjAecAU2AN_FqkVwo_lXBfqyxqNn3Yc'
+  refresh_token: process.env.GOOGLE_REFRESH_TOKEN
 });
 
 // Nodemailer transporter setup
@@ -29,10 +30,10 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     type: 'OAuth2',
-    user: 'fitnessephesians@gmail.com', // Your email
-    clientId: '280762704986-rtiahrk4op6jc9d43t9u5cmlqh7gd72j.apps.googleusercontent.com',
-    clientSecret: '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',
-    refreshToken: '1//04OL5ztfZcAZUCgYIARAAGAQSNwF-L9IrbeFIrgau64oN1-_EcGXDXGnmyy9kzFvgkDgeWjAecAU2AN_FqkVwo_lXBfqyxqNn3Yc',
+    user: process.env.GMAIL_USER,          // Use environment variable for your email
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
     accessToken: oauth2Client.getAccessToken()
   }
 });
