@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -13,9 +14,11 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ProgramsComponent } from './programs/programs.component';
 import { ColorsComponent } from './colors/colors.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { OrdersComponent } from './orders/orders.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home-page', pathMatch: 'full'},
+    {path: 'login', component: LoginComponent},
     {path: 'home-page', component: HomePageComponent},
     {path: 'about-us', component: AboutUsComponent},
     {path: 'contact-us', component: ContactUsComponent},
@@ -26,5 +29,6 @@ export const routes: Routes = [
     {path: 'checkout', component: CheckoutComponent},
     {path: 'programs', component: ProgramsComponent},
     {path: 'colors', component: ColorsComponent},
-    {path: 'review', component: ReviewsComponent}
+    {path: 'review', component: ReviewsComponent},
+    {path: 'orders', component: OrdersComponent}
 ];

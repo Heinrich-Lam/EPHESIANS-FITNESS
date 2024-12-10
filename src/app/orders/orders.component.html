@@ -1,0 +1,92 @@
+<body>
+    <header class="site-header">
+      <div class="header-content">
+        <h1>EPHESIANS FITNESS</h1>
+      </div>
+    </header>
+    <div class="orders-container">
+      <h1>Orders</h1>
+  
+      <div class="filter-container">
+        <label for="orderid">Order ID</label>
+        <input
+          type="text"
+          id="orderid"
+          placeholder="Order ID"
+          [(ngModel)]="orderId"
+        />
+  
+        <label for="orderStatus">Order Status</label>
+        <select
+          id="orderStatus"
+          [(ngModel)]="orderStatus"
+          placeholder="Order Status"
+        >
+          <option value="" disabled selected>Select Order Status</option>
+          <option value="0">Pending</option>
+          <option value="1">Approved</option>
+          <option value="2">Shipped</option>
+        </select>
+  
+        <label for="orderDate">Order Date</label>
+        <input
+          type="date"
+          id="orderDate"
+          [(ngModel)]="orderDate"
+          placeholder="Order Date"
+        />
+  
+        <button (click)="loadOrders()">Search</button>
+        <button (click)="goToHome()">Back to Home</button>
+      </div>
+  
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Cart ID</th>
+            <th>Status</th>
+            <th>Order Date</th>
+            <th>Total Amount</th>
+            <th>Client Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.OrderID }}</td>
+            <td>{{ order.CartID }}</td>
+            <td>{{ order.OrderStatus }}</td>
+            <td>{{ order.OrderDate | date : "short" }}</td>
+            <td>{{ order.FinalTotal | currency : "R " }}</td>          
+            <td>{{ order.ClientEmail }}</td>
+            <td>
+              <button
+                *ngIf="order.OrderStatus === 'Pending'"
+                (click)="approveOrder(order.CART_ID)"
+              >
+                Approve
+              </button>
+              <button
+                *ngIf="order.OrderStatus === 'Approved'"
+                (click)="shipOrder(order.CART_ID)"
+              >
+                Ship
+              </button>
+            </td>
+          </tr>
+  
+          <!-- Placeholder rows -->
+          <ng-container *ngIf="orders.length < 10">
+            <tr *ngFor="let i of [].constructor(10 - orders.length)">
+              <td colspan="7" style="text-align: center">No Orders Found</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <!-- Include the popup component in your HTML file -->
+    <app-popup-message></app-popup-message>
+    <app-footer></app-footer>
+  </body>
+  

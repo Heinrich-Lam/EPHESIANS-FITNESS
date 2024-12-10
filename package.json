@@ -21,6 +21,7 @@
     "dotenv": "^16.4.7",
     "file-saver": "^2.0.5",
     "googleapis": "^144.0.0",
+    "ngx-papaparse": "^8.0.0",
     "nodemailer": "^6.9.16",
     "papaparse": "^5.4.1",
     "rxjs": "~7.8.0",

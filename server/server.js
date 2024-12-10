@@ -386,6 +386,120 @@ app.post('/add-order', (req, res) => {
   });
 });
 
+app.post('/add-order-summary', (req, res) => {
+  const summaryData = req.body.summaryData; // Order summary data
+  const filePath = path.join(__dirname, '../src/assets/files/OrderSummary.csv'); // Path to the OrderSummary CSV file
+
+  // Read the existing CSV file
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading CSV file:', err);
+      return res.status(500).send({ message: 'Error reading CSV file' });
+    }
+
+    // Parse the existing CSV data
+    const parsedData = Papa.parse(data, { header: true, skipEmptyLines: true }).data;
+
+    // Add the new summary data
+    parsedData.push(summaryData);
+
+    // Convert the updated data back to CSV format
+    const csvContent = Papa.unparse(parsedData);
+
+    // Write the updated CSV data back to the file
+    fs.writeFile(filePath, csvContent, 'utf8', (err) => {
+      if (err) {
+        console.error('Error writing to CSV file:', err);
+        return res.status(500).send({ message: 'Error updating CSV file' });
+      }
+
+      res.status(200).send({ message: 'Order summary saved successfully' });
+    });
+  });
+});
+
+//Approve order.
+app.post('/approve-order', (req, res) => {
+  const { cartId } = req.body; // `cartId` identifies the order to approve
+  const filePath = path.join(__dirname, '../src/assets/files/OrderSummary.csv'); // Path to the CSV file
+
+  // Read the existing CSV file
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading CSV file:', err);
+      return res.status(500).send({ message: 'Error reading CSV file' });
+    }
+
+    // Parse the existing CSV data
+    const parsedData = Papa.parse(data, { header: true, skipEmptyLines: true });
+    const orders = parsedData.data;
+
+    // Find the order by cartId
+    const orderIndex = orders.findIndex(order => order.CartID === cartId);
+    if (orderIndex === -1) {
+      return res.status(404).send({ message: 'Order not found' });
+    }
+
+    // Update the order status to "Approved"
+    orders[orderIndex].OrderStatus = 'Approved';
+
+    // Convert the updated data back to CSV format
+    const csvContent = Papa.unparse(orders);
+
+    // Write the updated CSV data back to the file
+    fs.writeFile(filePath, csvContent, 'utf8', (err) => {
+      if (err) {
+        console.error('Error writing to CSV file:', err);
+        return res.status(500).send({ message: 'Error updating CSV file' });
+      }
+
+      res.status(200).send({ message: 'Order approved successfully' });
+    });
+  });
+});
+
+
+
+//Ship order.
+app.post('/ship-order', (req, res) => {
+  const { cartId } = req.body; // `cartId` is the identifier for the order
+  const filePath = path.join(__dirname, '../src/assets/files/OrderSummary.csv'); // Path to the CSV file
+
+  // Read the existing CSV file
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading CSV file:', err);
+      return res.status(500).send({ message: 'Error reading CSV file' });
+    }
+
+    // Parse the existing CSV data
+    const parsedData = Papa.parse(data, { header: true, skipEmptyLines: true });
+    const orders = parsedData.data;
+
+    // Find the order by cartId
+    const orderIndex = orders.findIndex(order => order.CartID === cartId);
+    if (orderIndex === -1) {
+      return res.status(404).send({ message: 'Order not found' });
+    }
+
+    // Update the order status to "Shipped"
+    orders[orderIndex].OrderStatus = 'Shipped';
+
+    // Convert the updated data back to CSV format
+    const csvContent = Papa.unparse(orders);
+
+    // Write the updated CSV data back to the file
+    fs.writeFile(filePath, csvContent, 'utf8', (err) => {
+      if (err) {
+        console.error('Error writing to CSV file:', err);
+        return res.status(500).send({ message: 'Error updating CSV file' });
+      }
+
+      res.status(200).send({ message: 'Order marked as shipped and email sent successfully' });
+    });
+  });
+});
+
 //#endregion
 
 // Start the server

@@ -1,0 +1,78 @@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <header class="site-header">
+      <div class="header-content">
+        <h1>EPHESIANS FITNESS</h1>
+      </div>
+  </header>
+  <body>
+    <div class="main-container"> <!-- New container -->
+        <div class="login-container">
+            <div class="login-box">
+                <h1 class="text-center mb-4">Login</h1>
+  
+                <!-- Button to validate username & password -->
+                <div class="button-group">
+                  <button class="btn btn-primary login-btn" type="button" (click)="onGuest()">Log in as Guest</button>
+              </div>
+  
+                <!-- Form element with formGroup directive -->
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                    <!-- User input username -->
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            formControlName="username"
+                            placeholder="Username"
+                            autocomplete="off"
+                        />
+                    </div>
+  
+                    <!-- User input password -->
+                    <div class="input-group">
+                        <input
+                            type="password"
+                            class="form-control"
+                            formControlName="password"
+                            placeholder="Password"
+                            autocomplete="off"
+                        />
+                    </div>
+  
+                    <!-- Button to validate username & password -->
+                    <div class="button-group">
+                        <button class="btn btn-primary login-btn" type="submit">Log in</button>
+                    </div>
+                </form>
+  
+                <!-- Register Button -->
+                <!-- <div class="button-group">
+                    <button
+                        class="btn btn-secondary register-btn"
+                        id="register"
+                        type="button"
+                        (click)="onRegister()"
+                    >
+                        Register
+                    </button>
+                </div> -->
+  
+                <!-- Error message -->
+                <div class="mt-3">
+                    <p class="text-danger">{{ errorMessage }}</p>
+                </div>
+            </div>
+        </div>
+  
+        <!-- Include the popup component in your HTML file -->
+        <app-popup-message></app-popup-message>
+  
+        <!-- Conditional rendering of footer -->
+        <app-footer *ngIf="isFooterVisible"></app-footer>
+    </div>
+  </body>
+  

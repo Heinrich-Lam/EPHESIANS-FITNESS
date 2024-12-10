@@ -110,8 +110,7 @@ export class HeaderComponent implements OnInit{
   onLog() {    
     localStorage.removeItem('token');
     localStorage.removeItem('access');
-    this.popup.show('This fucntion is still in development!');
-    //this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 
   //Order tracking Page. (Admin use only.)

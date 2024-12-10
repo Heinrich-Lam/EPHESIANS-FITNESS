@@ -30,6 +30,7 @@ PRODUCTid: string = '';
 PRODUCTquantity: number = 0;
 CARTID: any;
 ORDERID: any;
+currentDate: Date = new Date();
 
 @ViewChild(PopupMessageComponent) popup!: PopupMessageComponent;
 
@@ -214,19 +215,43 @@ onSubmit(form: NgForm) {
         SubTotal: totalAmount,
         ShippingFee: shippingFee,
         FinalTotal: finalTotal,
+        OrderStatus: 'Pending',
+        OrderDate: this.currentDate
       }));
+
+      const summaryData = {
+        CartID: this.CARTID,
+        OrderID: this.ORDERID,
+        ClientEmail: this.userInfo.email,
+        SubTotal: totalAmount,
+        ShippingFee: shippingFee,
+        FinalTotal: finalTotal,
+        OrderStatus: 'Pending',
+        OrderDate: this.currentDate,
+        OrderUpdateDate: this.currentDate // Initially the same as OrderDate
+      };
 
       // Send order data to the server
       this.http.post('http://localhost:3000/add-order', { orderData }).subscribe({
         next: () => {
-          this.sendEmail(form);
-          this.popup.show('Order has been placed successfully!');
-          form.reset();
-          this.clearCart();
-          this.showLoading = false;
-          setTimeout(() => {
-            this.router.navigate(['/home']);
-          }, 3000);
+          // Send summary data to the second endpoint
+          this.http.post('http://localhost:3000/add-order-summary', { summaryData }).subscribe({
+            next: () => {
+              this.sendEmail(form);
+              this.popup.show('Order has been placed successfully!');
+              form.reset();
+              this.clearCart();
+              this.showLoading = false;
+              setTimeout(() => {
+                this.router.navigate(['/home']);
+              }, 3000);
+            },
+            error: (error) => {
+              console.error('Error saving order summary to CSV:', error);
+              this.popup.show('Failed to save order summary. Please try again.');
+              this.showLoading = false;
+            },
+          });
         },
         error: (error) => {
           console.error('Error saving order to CSV:', error);

@@ -1,0 +1,3 @@
+CartID,OrderID,ClientEmail,SubTotal,ShippingFee,FinalTotal,OrderStatus,OrderDate,OrderUpdateDate
+211987,132801,heinrichlam2@gmail.com,300,50,350,Pending,2024-12-06T10:40:31.284Z,2024-12-06T10:40:31.284Z
+362431,756444,heinrichlam2@gmail.com,300,50,350,Pending,2024-12-06T11:32:50.830Z,2024-12-06T11:32:50.830Z

@@ -1,0 +1,164 @@
+@import '../Styles/colors.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $background-color-dark;
+  color: $text-dark-color;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1 {
+  font-family: $font-heading;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: $text-dark-color;
+}
+
+.site-header {
+  background-color: $header-background;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px $shadow-light;
+
+  .header-content {
+    h1 {
+      color: $header-text-color;
+      font-family: $font-heading;
+      font-size: 35px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-box {
+  background-color: $card-background;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Increased width for better fit on mobile */
+  max-width: 400px;
+  text-align: center;
+
+  @media (max-width: 600px) {
+    padding: 25px;
+    width: 95%; /* Makes the login box full width on mobile */
+  }
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  color: $text-dark-color;
+}
+
+input {
+  font-family: $font-button;
+  font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+
+  &:focus {
+    border-color: $accent-color;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  color: $white-color;
+  cursor: pointer;
+  font-size: 16px;
+
+  &.login-btn,
+  &.register-btn {
+    font-family: $font-button;
+    background-color: $button-background;
+
+    &:hover {
+      background-color: $button-hover-background;
+    }
+  }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+.mt-3 {
+  margin-top: 15px;
+}
+
+.text-danger {
+  color: $danger-color;
+}
+
+app-footer {
+  margin-top: auto;
+}
+
+@media (max-width: 600px) {
+  .login-box {
+    padding: 25px;
+  }
+
+  .site-header {
+    padding: 15px 0;
+  }
+}

@@ -1,1 +1,3 @@
-OrderID,FullName,Email,ShippingAddress,City,State,ZipCode,CartID,ProductID,Size,Color,Type,Quantity,SubTotal,ShippingFee,FinalTotal
+OrderID,FullName,Email,ShippingAddress,City,State,ZipCode,CartID,ProductID,Size,Color,Type,Quantity,SubTotal,ShippingFee,FinalTotal,OrderStatus,OrderDate
+132801,Heinrich Lambrechts,heinrichlam2@gmail.com,"Tamarisk Street, Village Green",Johannesburg,Guateng,1709,211987,Pump Cover Cross Logo,XS,White,Normal,1,300,50,350,Pending,2024-12-06T10:40:31.284Z
+756444,Heinrich,heinrichlam2@gmail.com,AMF,AMF,AMF,2490,362431,Pump Cover EPH 2:8-9,XS,White,Normal,1,300,50,350,Pending,2024-12-06T11:32:50.830Z

@@ -1,0 +1,217 @@
+@import '../Styles/colors.scss';
+
+.site-header {
+    background-color: $primary-color;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px $shadow-light;
+
+    .header-content {
+        h1 {
+            font-family: $font-heading;
+            color: $text-light-color;
+            font-size: 35px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 0;
+        }
+    }
+}
+
+.orders-container {
+    padding: 20px;
+    background-color: $background-color-dark;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    h1 {
+        font-family: $font-heading;
+        color: $hero-text-color;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+
+        label {
+            color: $white-color;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            padding: 10px;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 250px;
+            font-family: $font-body;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: $button-background;
+            color: $white-color;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: $font-button;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: $button-hover-background;
+            }
+        }
+    }
+
+    .orders-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        overflow-x: auto;
+    
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid $border-color;
+            font-family: $font-body;
+            color: $text-light-color;
+            font-size: 0.95em;
+            word-wrap: break-word;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+        }
+    
+        th {
+            background-color: $header-background;
+            color: $white-color;
+            font-weight: bold;
+        }
+    
+        tr {
+            transition: background-color 0.2s ease;
+    
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+    
+        button {
+            background-color: $button-background;
+            color: $white-color;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: $font-button;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+    
+            &:hover {
+                background-color: $button-hover-background;
+            }
+        }
+    
+        /* Responsive styles for mobile view */
+        @media screen and (max-width: 768px) {
+            th:nth-child(2), /* Hide Cart ID column */
+            td:nth-child(2),
+            th:nth-child(5), /* Hide Total Amount column */
+            td:nth-child(5),
+            th:nth-child(6),
+            td:nth-child(6) {
+                display: none;
+            }
+        }
+    }
+    
+
+    .placeholder-row {
+        background-color: #f9f9f9;
+        color: $text-light-color;
+        height: 50px;
+        text-align: center;
+    }
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .site-header {
+        .header-content h1 {
+            font-size: 28px;
+        }
+    }
+
+    .orders-container {
+        padding: 15px;
+
+        .filter-container {
+            flex-direction: column;
+            align-items: stretch;
+
+            input[type="text"],
+            input[type="date"],
+            select {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        .orders-table {
+            th,
+            td {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+
+            th {
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .site-header {
+        .header-content h1 {
+            font-size: 22px;
+        }
+    }
+
+    .filter-container {
+        input[type="text"],
+        input[type="date"],
+        select {
+            font-size: 0.9em;
+        }
+
+        button {
+            font-size: 0.9em;
+            padding: 8px;
+        }
+    }
+
+    .orders-table {
+        th,
+        td {
+            font-size: 0.8em;
+            padding: 8px;
+        }
+    }
+}
