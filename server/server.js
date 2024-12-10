@@ -15,6 +15,11 @@ const googleClientSecret = config.googleClientSecret;
 const googleRefreshToken = config.googleRefreshToken;
 const googleUser = config.googleUser;
 
+const accountName = config.accountName;
+const bankName = config.bankName;
+const accountNumber = config.accountNumber;
+const branchCode = config.branchCode;
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -203,10 +208,10 @@ app.post('/send-payment-email', (req, res) => {
       <p><strong>Total Amount Due:</strong> R${totalAmount}</p>
 
       <h4>Banking Details:</h4>
-      <p><strong>Account Name:</strong> Ephesians Fitness</p>
-      <p><strong>Bank:</strong> First National Bank</p>
-      <p><strong>Account Number:</strong> 12345678912</p>
-      <p><strong>Branch Code:</strong> 250655</p>
+      <p><strong>Account Name:</strong> ${accountName}</p>
+      <p><strong>Bank:</strong> ${bankName}</p>
+      <p><strong>Account Number:</strong> ${accountNumber}</p>
+      <p><strong>Branch Code:</strong> ${branchCode}</p>
       <p><strong>Reference:</strong> ${orderid}</p>
 
       <p>Please confirm payment within 48 hours to process your order.</p>
