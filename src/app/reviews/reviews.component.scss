@@ -1,0 +1,133 @@
+@import '../Styles/colors.scss';
+
+#reviews {
+    background-color: $contact-us-main-background;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    h2 {
+        font-family: $font-heading;
+        font-size: 2.5em;
+        color: $contact-us-heading-color;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .review {
+        margin: 15px 0;
+        padding: 10px;
+        border-bottom: 1px solid $contact-us-border-color;
+        color: $contact-us-heading-color;
+
+        h4 {
+            font-size: 1.2em;
+            font-family: $font-body;
+        }
+
+        p {
+            font-family: $font-body;
+            font-size: 1.0em;
+            line-height: 1.4;
+            color: $contact-us-heading-color;
+            margin-bottom: 10px;
+        }
+    }
+
+    form {
+        max-width: 500px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-family: $font-body;
+            font-size: 1.0em;
+            color: $contact-us-heading-color;
+            margin-bottom: 3px;
+        }
+
+        input, textarea {
+            background-color: $contact-us-txt-area-background;
+            color: $contact-us-text-color;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid $contact-us-border-color;
+            border-radius: 4px;
+            font-size: 1.1em;
+            transition: border-color 0.3s;
+
+            &:focus {
+                border-color: $contact-us-border-color;
+                outline: none;
+            }
+        }
+
+        .order-number-message {
+            color: $warning-color;
+            font-family: $font-body;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: $contact-us-button;
+            color: $contact-us-text-color;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: $contact-us-button-hover;
+            }
+        }
+    }
+
+    .pagination {
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        margin-top: 20px; 
+    
+        button {
+            margin: 0 10px; 
+            padding: 8px 12px; 
+            background-color: $contact-us-button;
+            color: $contact-us-text-color;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+    
+            &:hover {
+                background-color: $contact-us-button-hover;
+            }
+    
+            &[disabled] {
+                cursor: not-allowed; 
+                opacity: 0.5; 
+            }
+        }
+    
+        .page-info {
+            margin: 0 10px; 
+            font-family: $font-body; 
+            font-size: 1em; 
+            color: $contact-us-heading-color; 
+        }
+    }
+    
+}
+.email-warning {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  

@@ -507,6 +507,50 @@ app.post('/ship-order', (req, res) => {
 
 //#endregion
 
+//#region "Reviews."
+app.post('/add-review', (req, res) => {
+  const reviewData = req.body; // Corrected
+  const filePath = path.join(__dirname, '../src/assets/files/Reviews.csv');
+
+  // Read the existing CSV file
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading CSV file:', err);
+      return res.status(500).send({ message: 'Error reading CSV file' });
+    }
+
+    // Parse the existing CSV data
+    const parsedData = Papa.parse(data, {
+      header: true,
+      skipEmptyLines: true,
+      transformHeader: (header) => header.trim()
+    }).data;
+
+    // Validate incoming review data
+    if (!reviewData.Name || !reviewData.Rating || !reviewData.Comment || !reviewData.ReviewDate || !reviewData.Email) {
+      return res.status(400).send({ message: 'Invalid review data' });
+    }
+
+    // Add the new review data
+    parsedData.push(reviewData);
+
+    // Convert the updated data back to CSV format
+    const csvContent = Papa.unparse(parsedData);
+
+    // Write the updated CSV data back to the file
+    fs.writeFile(filePath, csvContent, 'utf8', (err) => {
+      if (err) {
+        console.error('Error writing to CSV file:', err);
+        return res.status(500).send({ message: 'Error updating CSV file' });
+      }
+
+      res.status(200).send({ message: 'Review added successfully' });
+    });
+  });
+});
+
+//#endregion
+
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {

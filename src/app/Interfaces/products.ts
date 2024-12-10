@@ -20,7 +20,6 @@ export interface Product {
   export function updateProductPrices(csvService: CsvService, products: ProductCategory[]) {
     csvService.fetchCsvData('assets/files/ProductPrices.csv').subscribe(
       (csvData) => {
-        console.log('Csv Data ', csvData);
         csvData.forEach(({ PRODUCT_NAME, PRODUCT_PRICE }) => {
           products.forEach((category) => {
             category.products.forEach((product) => {

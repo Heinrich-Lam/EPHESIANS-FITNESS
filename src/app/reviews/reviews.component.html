@@ -1,1 +1,59 @@
-<p>reviews works!</p>
+<body>
+    <div id="reviews">
+      <h2>Customer Reviews</h2>
+  
+      <!-- Display Previous Reviews -->
+      <div *ngFor="let review of paginatedReviews" class="review">
+        <h4>{{ review.Name }} - Rating: {{ review.Rating }}/5</h4>
+        <p>{{ review.Comment }}</p>
+      </div>      
+      <!-- Pagination Controls -->
+      <!-- Pagination Controls -->
+<div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 0"> < </button>
+    <span class="page-info">Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1"> > </button>
+</div>
+
+  
+      <!-- Review Submission Form -->
+      <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+        <label for="name">Name*</label>
+        <input id="name" type="text" formControlName="name" required>
+        <div *ngIf="reviewForm.get('name')?.invalid && reviewForm.get('name')?.touched" class="error-message">
+          Name is required.
+        </div>
+  
+        <label for="email">Email*</label>
+        <input id="email" type="email" formControlName="email" required (focus)="onEmailFocus()">
+        <p *ngIf="emailFocused" class="email-warning">Please ensure you enter the correct email address above.</p>
+        <div *ngIf="reviewForm.get('email')?.invalid && reviewForm.get('email')?.touched" class="error-message">
+          Valid email is required.
+        </div>
+  
+        <label for="rating">Rating* (1-5)</label>
+        <input id="rating" type="number" formControlName="rating" min="1" max="5" (change)="checkRating()" required>
+        <div *ngIf="reviewForm.get('rating')?.invalid && reviewForm.get('rating')?.touched" class="error-message">
+          Rating between 1 and 5 is required.
+        </div>
+  
+        <div *ngIf="showOrderNumberField">
+          <p>Please provide your Order Number so we can look into the problem.</p>
+          <label for="orderNumber">Order Number*</label>
+          <input id="orderNumber" type="text" formControlName="cartid" maxlength="6" pattern="^[0-9]{6}$">
+        </div>
+  
+        <label for="comment">Comment*</label>
+        <textarea id="comment" formControlName="comment" required></textarea>
+        <div *ngIf="reviewForm.get('comment')?.invalid && reviewForm.get('comment')?.touched" class="error-message">
+          Comment is required.
+        </div>
+  
+        <button type="submit">Submit Review</button>
+      </form>
+  
+      
+    </div>
+    <app-popup-message></app-popup-message>
+  </body>
+  

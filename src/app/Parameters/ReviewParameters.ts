@@ -3,5 +3,6 @@ export interface ReviewParameters{
     Name: string;
     Rating: number;
     Comment: string;
+    ReviewDate: Date;
     Email: string;
 }
