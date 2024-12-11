@@ -10,7 +10,7 @@ body {
 
 /* Hero Section */
 .hero {
-  background-image: linear-gradient(to bottom, #1a3344, #2980b9);
+  background-image: linear-gradient(to bottom, $gradient-top, $gradient-bottom);
   color: white;
   padding: 100px 0;
   text-align: center;
@@ -41,7 +41,7 @@ body {
 
   button {
     margin: 10px;
-    background-color: #2980b9;
+    background-color: $button-background;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -51,7 +51,7 @@ body {
   }
 
   button:hover {
-    background-color: #34495e;
+    background-color: $button-hover-background;
   }
 }
 

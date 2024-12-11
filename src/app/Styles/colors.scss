@@ -8,76 +8,155 @@ $font-button: 'Nunito';
 $font-lable: 'Montserrat';
 
 //#region "November Color Theme."
-$accent-color: #3F778C;
-$accent-hover-color: #8FA9B5;
+// $accent-color: #3F778C;
+// $accent-hover-color: #8FA9B5;
 
-$background-color-dark: #323D42;
-$black-color: #323D42; // Dark color close to black for deep contrast
-$border-color: #6587A1;
-$box-shadow-color: rgba(0, 0, 0, 0.15);
-$button-background: #38524C; // Dark green for buttons
-$button-checkout-color: #3F778C;
-$button-clear-color: #8FA9B5;
-$button-hover-background: #CBDCED;
-$button-hover-checkout: #8FA9B5;
-$button-hover-clear: #CBDCED;
-$button-hover-color: #8FA9B5;
+// $background-color-dark: #323D42;
+// $black-color: #323D42;
+// $border-color: #6587A1;
+// $box-shadow-color: rgba(0, 0, 0, 0.15);
+// $button-background: #38524C;
+// $button-checkout-color: #3F778C;
+// $button-clear-color: #8FA9B5;
+// $button-hover-background: #CBDCED;
+// $button-hover-checkout: #8FA9B5;
+// $button-hover-clear: #CBDCED;
+// $button-hover-color: #8FA9B5;
 
-$card-background: #FFFFFF; // Keeping card backgrounds neutral
-$carousel-background: #38524C;
+// $gradient-top: #1a3344;
+// $gradient-bottom: #2980b9;
 
-$dark-background: #323D42;
-$danger-color: #C62828; // Preserving a high-contrast red for danger alerts
-$divider-color: #6587A1;
+// $card-background: #FFFFFF;
+// $carousel-background: #38524C;
 
-$empty-cart-color: #323D42;
+// $dark-background: #323D42;
+// $danger-color: #C62828;
+// $divider-color: #6587A1;
 
-$header-background: #38524C;
-$header-background-color: #6587A1;
-$header-text-color: #000000;
-$hero-text-color: #000000; // Retaining a black color for sharp contrast in hero sections
+// $empty-cart-color: #323D42;
 
-$input-background: #CBDCED;
-$input-border-color: #3F778C;
-$input-focus-color: #8FA9B5;
+// $header-background: #38524C;
+// $header-background-color: #6587A1;
+// $header-text-color: #000000;
+// $hero-text-color: #000000;
 
-$order-info-background: #3F778C;
+// $input-background: #CBDCED;
+// $input-border-color: #3F778C;
+// $input-focus-color: #8FA9B5;
 
-$primary-color: #8FA9B5;
-$product-hover-shadow: rgba(63, 119, 140, 0.5);
+// $order-info-background: #3F778C;
 
-$secondary-color: #6587A1;
-$shadow-dark: rgba(50, 61, 66, 0.3);
-$shadow-light: rgba(50, 61, 66, 0.1);
+// $primary-color: #8FA9B5;
+// $product-hover-shadow: rgba(63, 119, 140, 0.5);
 
-$text-dark-color: #323D42;
-$text-light-color: #CBDCED;
+// $secondary-color: #6587A1;
+// $shadow-dark: rgba(50, 61, 66, 0.3);
+// $shadow-light: rgba(50, 61, 66, 0.1);
 
-$warning-color: #A67C1A; // Preserved existing warning color for visibility
-$white-color: #FFFFFF;
+// $text-dark-color: #323D42;
+// $text-light-color: #CBDCED;
 
-// Cart-Count
-$badge-background: #3F778C;
-$highlight-background: #ffc107; // Retaining a highlight background color for badges
+// $warning-color: #A67C1A;
+// $white-color: #FFFFFF;
 
-// Footer
-$footer-background: #38524C; 
-$footer-text: #CBDCED;
-$footer-hover: #8FA9B5;
+// // Cart-Count
+// $badge-background: #3F778C;
+// $highlight-background: #ffc107;
 
-// About Us
-$about-us-background: #6587A1;
-$about-us-text: #323D42;
-$about-us-li-background: #CBDCED;
-$about-us-li-hover: #8FA9B5;
+// // Footer
+// $footer-background: #38524C; 
+// $footer-text: #CBDCED;
+// $footer-hover: #8FA9B5;
 
-// Contact Us
-$contact-us-main-background: #6587A1;
-$contact-us-heading-color: #153147;
-$contact-us-text-color: #323D42;
-$contact-us-txt-area-background: #CBDCED;
-$contact-us-border-color: #38524C;
-$contact-us-button: #3F778C;
-$contact-us-button-hover: #8FA9B5;
+// // About Us
+// $about-us-background: #6587A1;
+// $about-us-text: #323D42;
+// $about-us-li-background: #CBDCED;
+// $about-us-li-hover: #8FA9B5;
+
+// // Contact Us
+// $contact-us-main-background: #6587A1;
+// $contact-us-heading-color: #153147;
+// $contact-us-text-color: #323D42;
+// $contact-us-txt-area-background: #CBDCED;
+// $contact-us-border-color: #38524C;
+// $contact-us-button: #3F778C;
+// $contact-us-button-hover: #8FA9B5;
 
 //#endregion
+
+$accent-color: #B79C56; // Warm gold for accents
+$accent-hover-color: #D4C9B4; // Light beige for hover accents
+
+$background-color-dark: #25330F; // Deep olive for dark background areas
+$black-color: #042D29; // Dark green for near-black elements
+$border-color: #929079; // Muted gray-beige for borders
+$box-shadow-color: rgba(0, 0, 0, 0.15); // Subtle black for shadow effects
+
+$button-background: #741102; // Deep red for primary buttons
+$button-checkout-color: #B79C56; // Warm gold for checkout button
+$button-clear-color: #741102; // Consistent deep red for clearing actions
+$button-hover-background: #D4C9B4; // Light beige for button hover
+$button-hover-checkout: #B79C56; // Gold hover for checkout
+$button-hover-clear: #929079; // Neutral hover for clear button
+$button-hover-color: #929079; // Gray-beige for general button hover
+
+$gradient-top: #8f1b1b;
+$gradient-bottom: #5e2d2d;
+
+$card-background: #ffffff; // White for cards to maintain neutrality
+$carousel-background: #D4C9B4; // Light beige for carousel background
+
+$dark-background: #25330F; // Deep olive for sections requiring a dark background
+$danger-color: #741102; // Deep red for warnings
+
+$divider-color: #929079; // Gray-beige for dividers
+$empty-cart-color: #042D29; // Dark green for empty cart areas
+
+$header-background: #B79C56; // Warm gold for headers
+$header-background-color: #25330F; // Dark olive-green for header sections
+$header-text-color: #25330F;
+$hero-text-color: #D4C9B4; // Light beige for hero text
+
+$input-background: #D4C9B4; // Light beige for input backgrounds
+$input-border-color: #25330F; // Deep olive for input borders
+$input-focus-color: #B79C56; // Gold for focused input borders
+
+$order-info-background: #741102; // Red for order info highlights
+
+$primary-color: #B79C56; // Gold for primary elements
+$product-hover-shadow: rgba(36, 51, 15, 0.5); // Olive shadow for product hover
+
+$secondary-color: #929079; // Gray-beige for secondary accents
+$shadow-dark: rgba(4, 45, 41, 0.3); // Dark green shadow for depth
+$shadow-light: rgba(36, 51, 15, 0.1); // Olive shadow for subtle light effects
+
+$text-dark-color: #25330F; // Olive for darker text
+$text-light-color: #D4C9B4; // Light beige for lighter text
+
+$warning-color: #B79C56; // Gold for warnings
+$white-color: #fff; // Retain white for essential contrast
+
+// Cart Count
+$badge-background: #741102; // Deep red for badges
+$highlight-background: #B79C56; // Gold for highlights
+
+// Footer
+$footer-background: #B79C56; // Dark green for footer background
+$footer-text: #0f0f0f; // Light beige for footer text
+$footer-hover: #B79C56; // Gold for footer hover
+
+// About Us
+$about-us-background: #741102; // Deep red for about section background
+$about-us-text: #D4C9B4; // Light beige for about text
+$about-us-li-background: #929079; // Gray-beige for list items background
+$about-us-li-hover: #B79C56; // Gold hover for list items
+
+// Contact Us
+$contact-us-main-background: #741102; // Deep red for main contact background
+$contact-us-heading-color: #D4C9B4;
+$contact-us-text-color: #000000; // Light beige for contact text
+$contact-us-txt-area-background: #D4C9B4; // Light beige for text areas
+$contact-us-border-color: #929079; // Gray-beige for contact section borders
+$contact-us-button: #B79C56; // Red for contact button
+$contact-us-button-hover: #b4a681; // Gold for contact button hover
